@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class GiftsServiceService {
+export class GiftingEventsService {
 
   constructor() { }
 
   //TODO : Connect to backend
+
 }
