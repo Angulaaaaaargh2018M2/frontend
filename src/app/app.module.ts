@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { GiftComponent } from './gift/gift.component';
+import { HomeComponent } from './home/home.component';
+import {HttpClientModule} from '@angular/common/http';
+
 import {
   MatButtonModule,
   MatCardModule,
@@ -14,13 +18,17 @@ import {
   MatToolbarModule,
 } from '@angular/material';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GiftComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,

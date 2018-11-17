@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {GiftComponent} from './gift/gift.component';
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
-  /*  { path: '', redirectTo: 'home', pathMatch: 'full' },*/
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'gift/:id', component: GiftComponent }
 ];
 
 @NgModule({
