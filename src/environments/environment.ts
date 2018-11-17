@@ -9,12 +9,16 @@ export const environment = {
     host: '127.0.0.1',
     port: '9000',
     endpoints: {
-      allGiftingEvents: '/api/giftingEvents',
-      oneGiftingEvent: '/api/giftingEvents/:id',
-      allGifts: '/api/gifts',
-      oneGift: '/api/gifts/:id',
-      allGiftsForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts',
-      oneGiftForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts/:id'
+      giftingEvents: {
+        allGiftingEvents: '/api/giftingEvents',
+        oneGiftingEvent: '/api/giftingEvents/:id'
+      },
+      gifts: {
+        allGifts: '/api/gifts',
+        oneGift: '/api/gifts/:id',
+        allGiftsForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts',
+        oneGiftForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts/:id',
+      }
     }
   }
 };

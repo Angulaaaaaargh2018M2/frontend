@@ -21,7 +21,7 @@ export class GiftsService {
         baseUrl += `:${environment.backend.port}`;
       }
       // build all backend urls
-      Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[ k ] = `${baseUrl}${environment.backend.endpoints[ k ]}`);
+      Object.keys(environment.backend.endpoints.gifts).forEach(k => this._backendURL[ k ] = `${baseUrl}${environment.backend.endpoints.gifts[ k ]}`);
 
   }
 
@@ -34,6 +34,6 @@ export class GiftsService {
     return this._http.get<Gift>(this._backendURL.oneGift.replace(':id', id));
   }
 
-  //TODO : Connect to backend
+  //TODO : Add missing methods
 
 }
