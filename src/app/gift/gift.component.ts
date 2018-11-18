@@ -26,11 +26,6 @@ export class GiftComponent implements OnInit {
   ngOnInit() {
     merge(
       this._route.params.pipe(
-        // pas d'event, juste un gift
-        filter(params => !!params['id'] && !params['giftingEventId']),
-        flatMap(params => this._giftsService.fetchOneForEvent(params['giftingEventId'], params['id']))
-      ),
-      this._route.params.pipe(
         // un event et un gift
         filter(params => !!params['id'] && !!params['giftingEventId']),
         flatMap(params => this._giftsService.fetchOne(params['id']))
