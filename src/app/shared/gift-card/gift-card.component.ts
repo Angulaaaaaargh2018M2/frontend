@@ -22,6 +22,15 @@ export class GiftCardComponent implements OnInit {
     return this._gift;
   }
 
+  get listPeople(): ListedPerson[] {
+    return this._gift.listPeople;
+  }
+
+  get listLinks(): string[] {
+
+    return this._gift.linksGifts;
+  }
+
   /**
    * Sets private property _gift
    */

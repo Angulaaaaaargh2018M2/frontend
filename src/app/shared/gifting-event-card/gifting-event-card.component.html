@@ -1,3 +1,48 @@
-<p>
-  gifting-event-card works!
-</p>
+<mat-card class="mat-whiteframe-2dp">
+  <mat-card-title-group>
+    <mat-card-title>
+      <a [routerLink]="['/giftingEvent', giftingEvent.id]">
+        <span>{{ giftingEvent.name }} </span>
+      </a>
+    </mat-card-title>
+    <mat-card-subtitle>{{giftingEvent.nameEvent}}</mat-card-subtitle>
+  </mat-card-title-group>
+
+  <mat-card-content>
+    <div class="gift-info">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h3> Liens : </h3>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <div class="gift-listing">
+            <mat-list-item *ngFor="let link of gift.linksGifts" class="plop">
+              <a class="truncate" href="{{link}}">{{link}}</a>
+            </mat-list-item>
+          </div>
+        </mat-list>
+      </mat-expansion-panel>
+    </div>
+
+    <div class="gift-info">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h3> Personnes : </h3>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <div class="gift-listing">
+            <mat-list-item *ngFor="let person of gift.listPeople; let i = index" [attr.data-index]="i">
+              <span>{{person.mail}}</span>
+              <span class="flex"></span>
+              <span><a>{{person.send | isSend}}</a></span>
+            </mat-list-item>
+          </div>
+        </mat-list>
+      </mat-expansion-panel>
+    </div>
+  </mat-card-content>
+</mat-card>

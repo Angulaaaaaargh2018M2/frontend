@@ -18,7 +18,7 @@
         </mat-expansion-panel-header>
         <mat-list>
           <div class="gift-listing">
-            <mat-list-item *ngFor="let link of gift.linksGifts" class="plop">
+            <mat-list-item *ngFor="let link of listLinks">
               <a class="truncate" href="{{link}}">{{link}}</a>
             </mat-list-item>
           </div>
@@ -35,7 +35,7 @@
         </mat-expansion-panel-header>
         <mat-list>
           <div class="gift-listing">
-            <mat-list-item *ngFor="let person of gift.listPeople; let i = index" [attr.data-index]="i">
+            <mat-list-item *ngFor="let person of listPeople">
               <span>{{person.mail}}</span>
               <span class="flex"></span>
               <span><a>{{person.send | isSend}}</a></span>

@@ -10,7 +10,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'giftingEvent/:id', component: GiftingEventComponent },
   { path: 'gift/:id', component: GiftComponent },
-  { path: 'gifts', component: GiftsComponent }
+  { path: 'giftingEvent/:giftingEventId/gift/:id', component: GiftComponent},
+  { path: 'gifts', component: GiftsComponent },
+  { path: 'giftingEvent/:giftingEventId/gifts', component: GiftsComponent}
 ];
 
 @NgModule({

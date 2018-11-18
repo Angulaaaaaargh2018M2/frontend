@@ -38,12 +38,28 @@ export class GiftsService {
       );
   }
 
+  fetchForGiftingEvent(giftingEventId: number): Observable<Gift[]> {
+      return this._http.get<Gift[]>(this._backendURL.allGiftsForGiftingEvent.replace(':giftingEventId', giftingEventId))
+        .pipe(
+          filter(_ => !!_),
+          defaultIfEmpty([])
+        );
+  }
+
   /**
    * Function to return one gift for current id
    */
   fetchOne(id: number): Observable<Gift> {
     return this._http.get<Gift>(this._backendURL.oneGift.replace(':id', id));
   }
+
+  /**
+   * Function to return one gift for current id
+   */
+  fetchOneForEvent(giftingEventId: number, id: number): Observable<Gift> {
+    return this._http.get<Gift>(this._backendURL.oneGiftForGiftingEvent.replace(':giftingEventId', giftingEventId).replace(':id', id));
+  }
+
 
   //TODO : Add missing methods
 

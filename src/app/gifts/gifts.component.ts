@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Gift} from '../shared/interfaces/gift';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {GiftsService} from '../shared/services/gifts.service';
 import {GIFTS} from '../_static/bdd';
+import {merge} from 'rxjs';
+import {filter, flatMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-gifts',
@@ -14,7 +16,7 @@ export class GiftsComponent implements OnInit {
   private _gifts: any[];
   private _view: string;
 
-  constructor(private _router: Router, private _giftsService: GiftsService) {
+  constructor(private _router: Router, private _giftsService: GiftsService, private _route: ActivatedRoute) {
     this._gifts = [];
     this._view = 'card';
   }
@@ -41,13 +43,21 @@ export class GiftsComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*
-    this._giftsService
-      .fetch()
+    merge(
+      this._route.params.pipe(
+        // tous les gifts pour l'event
+        filter(params => !!params['giftingEventId']),
+        flatMap(params => this._giftsService.fetchForGiftingEvent(params['giftingEventId']))
+      ),
+      this._route.params.pipe(
+        // tous les gifts pour tous les events
+        filter(params => !params['giftingEventId']),
+        flatMap(params => this._giftsService.fetch())
+      )
+    )
       .subscribe(
         (gifts: Gift[]) => this._gifts = gifts
       );
-      */
     // TODO : uncomment when backend is done
     this._gifts = GIFTS;
   }
