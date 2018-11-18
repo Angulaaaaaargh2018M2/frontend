@@ -1,0 +1,31 @@
+<mat-card class="mat-whiteframe-2dp">
+  <mat-card-title-group>
+    <mat-card-title>
+      <a [routerLink]="['/gift', gift.id]">
+        <span>{{ gift.name }} </span>
+      </a>
+    </mat-card-title>
+    <mat-card-subtitle>Quantité : {{gift.quantity}}</mat-card-subtitle>
+  </mat-card-title-group>
+
+  <mat-card-content>
+    <div class="gift-info">
+      <mat-list>
+        <h3 matLine> Liens : </h3>
+        <mat-list-item *ngFor="let link of gift.linksGifts" class="mat-whiteframe-2dp mat-card">
+          <a class="truncate" href="{{link}}">{{link}}</a>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="gift-info">
+      <mat-list>
+        <h3 matLine> Personnes : </h3>
+        <mat-list-item *ngFor="let person of gift.listPeople; let i = index" [attr.data-index]="i" class="mat-whiteframe-2dp mat-card">
+          <span>{{person.mail}}</span>
+          <span class="flex"></span>
+          <span><a>{{person.send ? 'Envoyé !' : 'Non envoyé.'}}</a></span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card-content>
+</mat-card>

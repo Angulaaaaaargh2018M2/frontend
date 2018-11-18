@@ -6,6 +6,8 @@ import {environment} from '../../../environments/environment';
 })
 export class GiftingEventsService {
 
+  private readonly _backendURL: any;
+
   constructor() {
     this._backendURL = {};
 

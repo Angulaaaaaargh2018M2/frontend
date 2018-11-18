@@ -17,13 +17,17 @@ import {
   MatListModule,
   MatToolbarModule,
 } from '@angular/material';
+import { GiftsComponent } from './gifts/gifts.component';
+import { GiftCardComponent } from './shared/gift-card/gift-card.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GiftComponent,
-    HomeComponent
+    HomeComponent,
+    GiftsComponent,
+    GiftCardComponent
   ],
   imports: [
     BrowserModule,
