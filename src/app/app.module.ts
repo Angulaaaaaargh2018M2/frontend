@@ -19,6 +19,10 @@ import {
 } from '@angular/material';
 import { GiftsComponent } from './gifts/gifts.component';
 import { GiftCardComponent } from './shared/gift-card/gift-card.component';
+import { GiftingEventComponent } from './gifting-event/gifting-event.component';
+import { GiftingEventsComponent } from './gifting-events/gifting-events.component';
+import { GiftingEventCardComponent } from './shared/gifting-event-card/gifting-event-card.component';
+import { IsSendPipe } from './shared/pipes/is-send.pipe';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { GiftCardComponent } from './shared/gift-card/gift-card.component';
     GiftComponent,
     HomeComponent,
     GiftsComponent,
-    GiftCardComponent
+    GiftCardComponent,
+    GiftingEventComponent,
+    GiftingEventsComponent,
+    GiftingEventCardComponent,
+    IsSendPipe
   ],
   imports: [
     BrowserModule,

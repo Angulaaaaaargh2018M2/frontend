@@ -23,7 +23,7 @@
         <mat-list-item *ngFor="let person of gift.listPeople; let i = index" [attr.data-index]="i" class="mat-whiteframe-2dp mat-card">
           <span>{{person.mail}}</span>
           <span class="flex"></span>
-          <span><a>{{person.send ? 'Envoyé !' : 'Non envoyé.'}}</a></span>
+          <span><a>{{person.send | isSend}}</a></span>
         </mat-list-item>
       </mat-list>
     </div>

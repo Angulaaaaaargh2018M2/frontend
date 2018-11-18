@@ -16,8 +16,7 @@ export class GiftComponent implements OnInit {
   private _gift: any;
 
   constructor(private _giftsService: GiftsService, private _route: ActivatedRoute) {
-    this._gift = GIFTS[0];
-    //this._gift = {} as Gift;
+    this._gift = {} as Gift;
   }
 
   get gift(): Gift {
@@ -26,6 +25,7 @@ export class GiftComponent implements OnInit {
 
   ngOnInit() {
 
+    /*
     merge(
       this._route.params.pipe(
         filter(params => !!params['id']),
@@ -37,5 +37,8 @@ export class GiftComponent implements OnInit {
       )
     )
       .subscribe((gift: any) => this._gift = gift);
+    */
+    // TODO : uncomment when backend is done
+    this._gift = GIFTS[0];
   }
 }
