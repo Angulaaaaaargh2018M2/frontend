@@ -10,22 +10,39 @@
 
   <mat-card-content>
     <div class="gift-info">
-      <mat-list>
-        <h3 matLine> Liens : </h3>
-        <mat-list-item *ngFor="let link of gift.linksGifts" class="mat-whiteframe-2dp mat-card">
-          <a class="truncate" href="{{link}}">{{link}}</a>
-        </mat-list-item>
-      </mat-list>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h3> Liens : </h3>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <div class="gift-listing">
+            <mat-list-item *ngFor="let link of gift.linksGifts" class="plop">
+              <a class="truncate" href="{{link}}">{{link}}</a>
+            </mat-list-item>
+          </div>
+        </mat-list>
+      </mat-expansion-panel>
     </div>
+
     <div class="gift-info">
-      <mat-list>
-        <h3 matLine> Personnes : </h3>
-        <mat-list-item *ngFor="let person of gift.listPeople; let i = index" [attr.data-index]="i" class="mat-whiteframe-2dp mat-card">
-          <span>{{person.mail}}</span>
-          <span class="flex"></span>
-          <span><a>{{person.send | isSend}}</a></span>
-        </mat-list-item>
-      </mat-list>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h3> Personnes : </h3>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <div class="gift-listing">
+            <mat-list-item *ngFor="let person of gift.listPeople; let i = index" [attr.data-index]="i">
+              <span>{{person.mail}}</span>
+              <span class="flex"></span>
+              <span><a>{{person.send | isSend}}</a></span>
+            </mat-list-item>
+          </div>
+        </mat-list>
+      </mat-expansion-panel>
     </div>
   </mat-card-content>
 </mat-card>
