@@ -1,29 +1,29 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Gift} from '../../interfaces/gift';
 import {GiftingEvent} from '../../interfaces/giftingEvent';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-gifting-event-form',
-  templateUrl: './gifting-event-form.component.html',
-  styleUrls: ['./gifting-event-form.component.css']
+  selector: 'app-gift-form',
+  templateUrl: './gift-form.component.html',
+  styleUrls: ['./gift-form.component.css']
 })
-export class GiftingEventFormComponent implements OnInit, OnChanges {
+export class GiftFormComponent implements OnInit, OnChanges {
   // private property to store update mode flag
   private _isUpdateMode: boolean;
   // private property to store model value
-  private _model: GiftingEvent;
+  private _model: Gift;
+
+  private _giftingEvent: GiftingEvent;
   // private property to store cancel$ value
   private readonly _cancel$: EventEmitter<void>;
   // private property to store submit$ value
-  private readonly _submit$: EventEmitter<GiftingEvent>;
+  private readonly _submit$: EventEmitter<Gift>;
   // private property to store form value
   private readonly _form: FormGroup;
 
-  /**
-   * Component constructor
-   */
   constructor() {
-    this._submit$ = new EventEmitter<GiftingEvent>();
+    this._submit$ = new EventEmitter<Gift>();
     this._cancel$ = new EventEmitter<void>();
     this._form = this._buildForm();
   }
@@ -32,17 +32,26 @@ export class GiftingEventFormComponent implements OnInit, OnChanges {
    * Sets private property _model
    */
   @Input()
-  set model(model: GiftingEvent) {
+  set model(model: Gift) {
     this._model = model;
+  }
+
+
+  @Input()
+  set giftingEvent(giftingEvent: GiftingEvent) {
+    this._giftingEvent = giftingEvent;
   }
 
   /**
    * Returns private property _model
    */
-  get model(): GiftingEvent {
+  get model(): Gift {
     return this._model;
   }
 
+  get giftingEvent(): GiftingEvent {
+    return this._giftingEvent;
+  }
   /**
    * Returns private property _form
    */
@@ -57,10 +66,6 @@ export class GiftingEventFormComponent implements OnInit, OnChanges {
     return this._isUpdateMode;
   }
 
-  get minDate(): Date{
-    return new Date();
-  }
-
   /**
    * Returns private property _cancel$
    */
@@ -73,7 +78,7 @@ export class GiftingEventFormComponent implements OnInit, OnChanges {
    * Returns private property _submit$
    */
   @Output('submit')
-  get submit$(): EventEmitter<GiftingEvent> {
+  get submit$(): EventEmitter<Gift> {
     return this._submit$;
   }
 
@@ -94,9 +99,10 @@ export class GiftingEventFormComponent implements OnInit, OnChanges {
     } else {
       this._model = {
         name: '',
-        nameEvent: '',
-        asAGift: false,
-        date: new Date().getTime()
+        quantity: 0,
+        linksGifts: [],
+        listPeople: [],
+        giftingEventId: this._giftingEvent.id
       };
       this._isUpdateMode = false;
     }
@@ -112,8 +118,9 @@ export class GiftingEventFormComponent implements OnInit, OnChanges {
   /**
    * Function to emit event to submit form and person
    */
-  submit(giftingEvent: GiftingEvent) {
-    this._submit$.emit(giftingEvent);
+  submit(gift: Gift) {
+    console.log(gift);
+    // this._submit$.emit(gift);
   }
 
   /**
@@ -121,16 +128,13 @@ export class GiftingEventFormComponent implements OnInit, OnChanges {
    */
   private _buildForm(): FormGroup {
     return new FormGroup({
-      name: new FormControl('', Validators.compose([
+      name : new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(2)
       ])),
-      nameEvent : new FormControl('', Validators.minLength(2)
+      quantity : new FormControl(1, Validators.min(1)
       ),
-      asAGift: new FormControl(false),
-      date: new FormControl(0, Validators.compose([
-        Validators.required, Validators.min(new Date().getTime())
-      ])),
-    });
+      linksGifts : new FormArray([]),
+      listPeople : new FormArray([])
+  });
   }
-
 }

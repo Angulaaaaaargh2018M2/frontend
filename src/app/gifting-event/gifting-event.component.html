@@ -1,3 +1,25 @@
-<section>
+<section [ngSwitch]="view">
+  <section *ngSwitchCase="'card'">
     <app-gift-card [gift]="gift" *ngFor="let gift of gifts"></app-gift-card>
+  </section>
+
+  <section *ngSwitchCase="'list'">
+    <mat-list>
+      <mat-list-item (click)="navigate(gift)" *ngFor="let gift of gifts" class="mat-whiteframe-2dp mat-card">
+        <h3 matLine>{{gift.name}}</h3>
+      </mat-list-item>
+    </mat-list>
+  </section>
+</section>
+
+
+
+<section class="buttons-fab" *ngIf="dialogStatus === 'inactive'">
+  <button (click)="showDialog()" mat-fab color="accent" class="button-add">
+    <i class="material-icons">add</i>
+  </button>
+  <button (click)="switchView()" mat-fab color="warn">
+    <i class="material-icons" *ngIf="view === 'card'" >list</i>
+    <i class="material-icons" *ngIf="view === 'list'" >cards</i>
+  </button>
 </section>

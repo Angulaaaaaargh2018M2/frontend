@@ -29,6 +29,8 @@ import { IsSendPipe } from './shared/pipes/is-send.pipe';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { GiftingEventsDialogComponent } from './shared/dialog/gifting-events-dialog/gifting-events-dialog.component';
 import { GiftingEventFormComponent } from './shared/form/gifting-event-form/gifting-event-form.component';
+import { GiftsDialogComponent } from './shared/dialog/gifts-dialog/gifts-dialog.component';
+import { GiftFormComponent } from './shared/form/gift-form/gift-form.component';
 
 
 @NgModule({
@@ -43,9 +45,14 @@ import { GiftingEventFormComponent } from './shared/form/gifting-event-form/gift
     GiftingEventCardComponent,
     IsSendPipe,
     GiftingEventsDialogComponent,
-    GiftingEventFormComponent
+    GiftingEventFormComponent,
+    GiftsDialogComponent,
+    GiftFormComponent
   ],
-  entryComponents: [ GiftingEventsDialogComponent],
+  entryComponents: [
+    GiftingEventsDialogComponent,
+    GiftsDialogComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

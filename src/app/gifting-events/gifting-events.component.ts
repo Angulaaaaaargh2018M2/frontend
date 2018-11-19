@@ -87,7 +87,7 @@ export class GiftingEventsComponent implements OnInit {
         flatMap(_ => this._add(_))
       )
       .subscribe(
-        (giftingEvent: GiftingEvent[]) => this._giftingEvents = giftingEvent,
+        (giftingEvents: GiftingEvent[]) => this._giftingEvents = giftingEvents,
         _ => this._dialogStatus = 'inactive',
         () => this._dialogStatus = 'inactive'
       );

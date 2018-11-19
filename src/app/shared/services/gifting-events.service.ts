@@ -53,7 +53,6 @@ export class GiftingEventsService {
    * Function to create a new giftingEvent
    */
   create(giftingEvent: GiftingEvent): Observable<any> {
-    //console.log(giftingEvent);
     return this._http.post<GiftingEvent>(this._backendURL.allGiftingEvents, giftingEvent, this._options());
   }
 

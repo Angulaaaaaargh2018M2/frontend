@@ -9,7 +9,8 @@ import {GiftingEvent} from '../../interfaces/giftingEvent';
 })
 export class GiftingEventsDialogComponent implements OnInit {
 
-  constructor(private _dialogRef: MatDialogRef<GiftingEventsDialogComponent>, @Inject(MAT_DIALOG_DATA) private _giftingEvent: GiftingEvent) {
+  constructor(private _dialogRef: MatDialogRef<GiftingEventsDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) private _giftingEvent: GiftingEvent) {
   }
 
   get giftingEvent(): GiftingEvent {

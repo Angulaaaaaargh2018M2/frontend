@@ -4,6 +4,7 @@ import {environment} from '../../../environments/environment';
 import {Gift} from '../interfaces/gift';
 import {Observable} from 'rxjs';
 import {defaultIfEmpty, filter} from 'rxjs/operators';
+import {GiftingEvent} from '../interfaces/giftingEvent';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,10 @@ export class GiftsService {
       }, headerList)) };
   }
 
-  //TODO : Add missing methods
-
+  /**
+   * Function to create a new gift
+   */
+  create(gift: Gift): Observable<any> {
+    return this._http.post<Gift>(this._backendURL.allGifts, gift, this._options());
+  }
 }
