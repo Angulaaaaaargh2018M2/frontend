@@ -70,4 +70,12 @@ export class GiftsService {
   create(gift: Gift): Observable<any> {
     return this._http.post<Gift>(this._backendURL.allGifts, gift, this._options());
   }
+
+  sendOneEmail(id: string, email: string): Observable<any> {
+    return this._http.get(this._backendURL.sendOneEmail.replace(':id', id).replace(':email', email));
+  }
+
+  sendEmail(id: string){
+    return this._http.get(this._backendURL.sendEmail.replace(':id', id));
+  }
 }

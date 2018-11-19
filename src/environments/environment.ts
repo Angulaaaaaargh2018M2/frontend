@@ -16,7 +16,10 @@ export const environment = {
       gifts: {
         allGifts: '/api/gifts',
         oneGift: '/api/gifts/:id',
-        allGiftsForGiftingEvent: '/api/giftingEvents/:giftingEventId/gifts'}
+        allGiftsForGiftingEvent: '/api/giftingEvents/:giftingEventId/gifts',
+        sendEmail: '/api/gifts/:id/emails',
+        sendOneEmail: '/api/gifts/:id/:email'
+      }
     }
   }
 };

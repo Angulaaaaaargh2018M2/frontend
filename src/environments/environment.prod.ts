@@ -12,7 +12,9 @@ export const environment = {
       gifts: {
         allGifts: '/api/gifts',
         oneGift: '/api/gifts/:id',
-        allGiftsForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts'
+        allGiftsForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts',
+        sendEmail: '/api/gifts/:id/emails',
+        sendOneEmail: '/api/gifts/:id/:email'
       }
     }
   }
