@@ -11,12 +11,12 @@ export const environment = {
     endpoints: {
       giftingEvents: {
         allGiftingEvents: '/api/giftingEvents',
-        oneGiftingEvent: '/api/giftingEvent/:id'
+        oneGiftingEvent: '/api/giftingEvents/:id'
       },
       gifts: {
         allGifts: '/api/gifts',
         oneGift: '/api/gifts/:id',
-        allGiftsForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts'}
+        allGiftsForGiftingEvent: '/api/giftingEvents/:giftingEventId/gifts'}
     }
   }
 };

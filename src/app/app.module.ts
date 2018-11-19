@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { GiftComponent } from './gift/gift.component';
 import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatButtonModule,
@@ -15,7 +16,9 @@ import {
   MatInputModule,
   MatListModule,
   MatToolbarModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { GiftsComponent } from './gifts/gifts.component';
 import { GiftCardComponent } from './shared/gift-card/gift-card.component';
@@ -24,6 +27,8 @@ import { GiftingEventsComponent } from './gifting-events/gifting-events.componen
 import { GiftingEventCardComponent } from './shared/gifting-event-card/gifting-event-card.component';
 import { IsSendPipe } from './shared/pipes/is-send.pipe';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { GiftingEventsDialogComponent } from './shared/dialog/gifting-events-dialog/gifting-events-dialog.component';
+import { GiftingEventFormComponent } from './shared/form/gifting-event-form/gifting-event-form.component';
 
 
 @NgModule({
@@ -36,8 +41,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     GiftingEventComponent,
     GiftingEventsComponent,
     GiftingEventCardComponent,
-    IsSendPipe
+    IsSendPipe,
+    GiftingEventsDialogComponent,
+    GiftingEventFormComponent
   ],
+  entryComponents: [ GiftingEventsDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -51,7 +59,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatCheckboxModule,
     MatDialogModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

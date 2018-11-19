@@ -49,6 +49,14 @@ export class GiftingEventsService {
     return { headers: new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList)) };
   }
 
+  /**
+   * Function to create a new giftingEvent
+   */
+  create(giftingEvent: GiftingEvent): Observable<any> {
+    //console.log(giftingEvent);
+    return this._http.post<GiftingEvent>(this._backendURL.allGiftingEvents, giftingEvent, this._options());
+  }
+
 
   //TODO : Add missing methods
 }

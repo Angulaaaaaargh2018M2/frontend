@@ -4,6 +4,8 @@ import {merge} from 'rxjs';
 import {filter, flatMap} from 'rxjs/operators';
 import {GiftingEventsService} from '../shared/services/gifting-events.service';
 import {ActivatedRoute} from '@angular/router';
+import {GiftsService} from '../shared/services/gifts.service';
+import {Gift} from '../shared/interfaces/gift';
 
 @Component({
   selector: 'app-gifting-event',
@@ -13,29 +15,37 @@ import {ActivatedRoute} from '@angular/router';
 export class GiftingEventComponent implements OnInit {
 
   private _giftingEvent: any;
+  private _gifts: any[];
 
-  constructor(private  _giftingEventsService: GiftingEventsService, private  _route: ActivatedRoute) {
+  constructor(private _giftingEventsService: GiftingEventsService,
+              private _giftsService: GiftsService,
+              private _route: ActivatedRoute) {
     this._giftingEvent = {} as GiftingEvent;
+    this._gifts = [];
   }
 
   get giftingEvent(): GiftingEvent {
     return this._giftingEvent;
   }
 
+  get gifts(): Gift[] {
+    return this._gifts;
+  }
+
   ngOnInit() {
-    merge(
       this._route.params.pipe(
-        // un event
         filter(params => !!params['id']),
         flatMap(params => this._giftingEventsService.fetchOne(params['id']))
-      ),
-      this._route.params.pipe(
-        // pas d'event
-        filter(params => !params['id']),
-        flatMap(params => this._giftingEventsService.fetchOne(params[0]))
       )
-    )
-      .subscribe((giftingEvent: any) => this._giftingEvent = giftingEvent);
+        .subscribe((giftingEvent: any) => this._giftingEvent = giftingEvent);
+
+
+      this._route.params.pipe(
+        filter(params => !!params['id']),
+        flatMap(params => this._giftsService.fetchForGiftingEvent(params['id']))
+      )
+        .subscribe((gifts: any[]) => this._gifts = gifts);
+
   }
 
 }
