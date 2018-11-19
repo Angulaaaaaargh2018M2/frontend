@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Gift} from '../interfaces/gift';
 import {Observable} from 'rxjs';
-import {GIFTS} from '../../_static/bdd';
 import {defaultIfEmpty, filter} from 'rxjs/operators';
 
 @Injectable({
@@ -54,6 +53,15 @@ export class GiftsService {
   }
 
 
+  /**
+   * Function to return request options
+   */
+  private _options(headerList: Object = {}): any {
+    return { headers: new HttpHeaders(Object.assign({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }, headerList)) };
+  }
 
   //TODO : Add missing methods
 

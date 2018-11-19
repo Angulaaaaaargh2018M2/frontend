@@ -27,7 +27,7 @@ export class GiftComponent implements OnInit {
     merge(
       this._route.params.pipe(
         // un event et un gift
-        filter(params => !!params['id'] && !!params['giftingEventId']),
+        filter(params => !!params['id']),
         flatMap(params => this._giftsService.fetchOne(params['id']))
       ),
       this._route.params.pipe(
@@ -37,7 +37,5 @@ export class GiftComponent implements OnInit {
       )
     )
   .subscribe((gift: any) => this._gift = gift);
-    // TODO : uncomment when backend is done
-    this._gift = GIFTS[0];
   }
 }

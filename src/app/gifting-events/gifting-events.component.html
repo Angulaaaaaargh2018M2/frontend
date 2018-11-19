@@ -1,3 +1,20 @@
-<p>
-  gifting-events works!
-</p>
+<section [ngSwitch]="view">
+  <section *ngSwitchCase="'card'">
+    <app-gifting-event-card [giftingEvent]="giftingEvent" *ngFor="let giftingEvent of giftingEvents"></app-gifting-event-card>
+  </section>
+
+  <section *ngSwitchCase="'list'">
+    <mat-list>
+      <mat-list-item (click)="navigate(giftingEvent)" *ngFor="let giftingEvent of giftingEvents" class="mat-whiteframe-2dp mat-card">
+        <h3 matLine>{{giftingEvent.name}}</h3>
+      </mat-list-item>
+    </mat-list>
+  </section>
+</section>
+
+<section class="buttons-fab" *ngIf="dialogStatus === 'inactive'">
+  <button (click)="switchView()" mat-fab color="warn">
+    <i class="material-icons" *ngIf="view === 'card'" >list</i>
+    <i class="material-icons" *ngIf="view === 'list'" >view_stream</i>
+  </button>
+</section>

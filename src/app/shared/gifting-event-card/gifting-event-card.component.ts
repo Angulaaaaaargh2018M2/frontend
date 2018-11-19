@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GiftingEvent} from '../interfaces/giftingEvent';
 import {Router} from '@angular/router';
-import {Gift} from '../interfaces/gift';
 
 @Component({
   selector: 'app-gifting-event-card',

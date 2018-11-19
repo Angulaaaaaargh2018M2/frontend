@@ -43,23 +43,10 @@ export class GiftsComponent implements OnInit {
   }
 
   ngOnInit() {
-    merge(
-      this._route.params.pipe(
-        // tous les gifts pour l'event
-        filter(params => !!params['giftingEventId']),
-        flatMap(params => this._giftsService.fetchForGiftingEvent(params['giftingEventId']))
-      ),
-      this._route.params.pipe(
-        // tous les gifts pour tous les events
-        filter(params => !params['giftingEventId']),
-        flatMap(params => this._giftsService.fetch())
-      )
-    )
+    this._giftsService.fetch()
       .subscribe(
         (gifts: Gift[]) => this._gifts = gifts
       );
-    // TODO : uncomment when backend is done
-    this._gifts = GIFTS;
   }
 
   /**

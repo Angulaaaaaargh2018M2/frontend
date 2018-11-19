@@ -6,19 +6,17 @@ export const environment = {
   production: false,
   backend: {
     protocol: 'http',
-    host: '127.0.0.1',
-    port: '9000',
+    host: '0.0.0.0',
+    port: '4443',
     endpoints: {
       giftingEvents: {
         allGiftingEvents: '/api/giftingEvents',
-        oneGiftingEvent: '/api/giftingEvents/:id'
+        oneGiftingEvent: '/api/giftingEvent/:id'
       },
       gifts: {
         allGifts: '/api/gifts',
         oneGift: '/api/gifts/:id',
-        allGiftsForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts',
-        oneGiftForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts/:id',
-      }
+        allGiftsForGiftingEvent: '/api/giftingEvent/:giftingEventId/gifts'}
     }
   }
 };

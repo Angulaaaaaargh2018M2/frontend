@@ -27,7 +27,6 @@ export class GiftCardComponent implements OnInit {
   }
 
   get listLinks(): string[] {
-
     return this._gift.linksGifts;
   }
 
