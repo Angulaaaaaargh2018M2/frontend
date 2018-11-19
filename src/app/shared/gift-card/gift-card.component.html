@@ -4,6 +4,9 @@
       <a [routerLink]="['/gift', gift.id]">
         <span>{{ gift.name }} </span>
       </a>
+      <span *ngIf="gift.listPeople">
+        <a (click)="sendEmail(id)" href="javascript:;">Notifier toutes les personnes</a>
+      </span>
     </mat-card-title>
     <mat-card-subtitle>Quantité : {{gift.quantity}}</mat-card-subtitle>
   </mat-card-title-group>
@@ -38,7 +41,7 @@
             <mat-list-item *ngFor="let person of listPeople">
               <span>{{person.mail}}</span>
               <span class="flex"></span>
-              <span><a>{{person.send | isSend}}</a></span>
+              <span><a (click)="sendOnemail(gift.id, person.send)" >{{person.send | isSend}}</a></span>
             </mat-list-item>
           </div>
         </mat-list>

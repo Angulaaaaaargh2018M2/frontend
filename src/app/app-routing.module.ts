@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'giftingEvents', component: GiftingEventsComponent},
   { path: 'gift/:id', component: GiftComponent },
   { path: 'gifts', component: GiftsComponent },
-  { path: 'giftingEvent/:giftingEventId/gifts', component: GiftsComponent}
+  { path: 'giftingEvent/:giftingEventId/gifts', component: GiftsComponent},
+  { path: 'gift/:id/:email', component: GiftComponent}
 ];
 
 @NgModule({

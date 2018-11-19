@@ -50,7 +50,7 @@ export class GiftsComponent implements OnInit {
   }
 
   /**
-   * Function to navigate to current person
+   * Function to navigate to current gift
    */
   navigate(gift: Gift) {
     this._router.navigate([ '/gift', gift.id ]);

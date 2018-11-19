@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Gift, ListedPerson} from '../interfaces/gift';
 import {Router} from '@angular/router';
+import {GiftsService} from '../services/gifts.service';
 
 @Component({
   selector: 'app-gift-card',
@@ -11,7 +12,7 @@ export class GiftCardComponent implements OnInit {
 
   private _gift: Gift;
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private _giftsService: GiftsService) {
     this._gift = {} as Gift;
   }
 
@@ -41,4 +42,11 @@ export class GiftCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  sendOneEmail(id: string, email: string) {
+    this._giftsService.sendOneEmail(id, email);
+  }
+
+  sendEmail(id: string) {
+    this._giftsService.sendEmail(id)
+  }
 }
