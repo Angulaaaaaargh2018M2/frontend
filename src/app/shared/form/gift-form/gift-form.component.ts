@@ -22,10 +22,13 @@ export class GiftFormComponent implements OnInit, OnChanges {
   // private property to store form value
   private readonly _form: FormGroup;
 
+  private _links: string[];
+
   constructor() {
     this._submit$ = new EventEmitter<Gift>();
     this._cancel$ = new EventEmitter<void>();
     this._form = this._buildForm();
+    this._links = [];
   }
 
   /**
@@ -66,6 +69,11 @@ export class GiftFormComponent implements OnInit, OnChanges {
     return this._isUpdateMode;
   }
 
+
+  get links(): string[] {
+    return this._links;
+  }
+
   /**
    * Returns private property _cancel$
    */
@@ -86,6 +94,10 @@ export class GiftFormComponent implements OnInit, OnChanges {
    * OnInit implementation
    */
   ngOnInit() {
+    this._form.addControl(
+      'giftingEventId',
+              new FormControl(this._giftingEvent.id)
+    );
   }
 
   /**
@@ -102,7 +114,6 @@ export class GiftFormComponent implements OnInit, OnChanges {
         quantity: 0,
         linksGifts: [],
         listPeople: [],
-        giftingEventId: this._giftingEvent.id
       };
       this._isUpdateMode = false;
     }
@@ -121,6 +132,11 @@ export class GiftFormComponent implements OnInit, OnChanges {
   submit(gift: Gift) {
     console.log(gift);
     // this._submit$.emit(gift);
+  }
+
+  addLink() {
+    this._links.push("PLOP");
+    console.log(this._links);
   }
 
   /**

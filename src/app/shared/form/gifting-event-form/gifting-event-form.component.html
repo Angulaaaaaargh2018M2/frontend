@@ -9,7 +9,7 @@
       <span style="width:100%">{{model.id}}</span>
     </p>
 
-    <table class="" cellspacing="0">
+    <table class="full-width" cellspacing="0">
       <tr>
         <td>
           <mat-form-field class="full-width" [class.mgb15]="form.get('name').dirty && form.get('name').invalid">
@@ -32,6 +32,8 @@
             <mat-datepicker-toggle [for]="giftingEventDatepicker"></mat-datepicker-toggle>
             <mat-datepicker #giftingEventDatepicker></mat-datepicker>
           </mat-form-field>
+
+
         </td>
       </tr>
     </table>

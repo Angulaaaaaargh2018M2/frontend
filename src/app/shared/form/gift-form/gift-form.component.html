@@ -9,7 +9,7 @@
       <span style="width:100%">{{model.id}}</span>
     </p>
 
-    <table class="" cellspacing="0">
+    <table class="full-width" cellspacing="0">
       <tr>
         <td>
           <mat-form-field class="full-width" [class.mgb15]="form.get('name').dirty && form.get('name').invalid">
@@ -27,6 +27,36 @@
               <strong>Au minimum 1</strong>
             </mat-error>
           </mat-form-field>
+
+          <mat-card>
+            <h5>
+              <span> Liens : </span>
+              <span class="flex"></span>
+              <span><button type="button"  (click)="addLink()">Add</button></span>
+            </h5>
+            <mat-list>
+              <mat-list-item *ngFor="let link of listLinks">
+                {{link}}
+              </mat-list-item>
+            </mat-list>
+          </mat-card>
+
+          <div class="gift-info">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h3> Mails : </h3>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-list>
+                <div class="gift-listing">
+                  <mat-list-item>
+                  </mat-list-item>
+                </div>
+              </mat-list>
+            </mat-expansion-panel>
+          </div>
+
         </td>
       </tr>
     </table>
