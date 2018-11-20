@@ -59,8 +59,7 @@ export class GiftsService {
    */
   private _options(headerList: Object = {}): any {
     return { headers: new HttpHeaders(Object.assign({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Content-Type': 'application/json'
       }, headerList)) };
   }
 
@@ -68,6 +67,8 @@ export class GiftsService {
    * Function to create a new gift
    */
   create(gift: Gift): Observable<any> {
+    console.log(gift);
+    console.log(this._backendURL.allGifts);
     return this._http.post<Gift>(this._backendURL.allGifts, gift, this._options());
   }
 

@@ -27,35 +27,13 @@
               <strong>Au minimum 1</strong>
             </mat-error>
           </mat-form-field>
+          <form (submit)="addLink()">
+            <input [(ngModel)]="link" placeholder="Lien" name="link" class="link"/>
+          </form>
 
-          <mat-card>
-            <h5>
-              <span> Liens : </span>
-              <span class="flex"></span>
-              <span><button type="button"  (click)="addLink()">Add</button></span>
-            </h5>
-            <mat-list>
-              <mat-list-item *ngFor="let link of listLinks">
-                {{link}}
-              </mat-list-item>
-            </mat-list>
-          </mat-card>
-
-          <div class="gift-info">
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <h3> Mails : </h3>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <mat-list>
-                <div class="gift-listing">
-                  <mat-list-item>
-                  </mat-list-item>
-                </div>
-              </mat-list>
-            </mat-expansion-panel>
-          </div>
+          <form (submit)="addMail()">
+            <input [(ngModel)]="mail" placeholder="Mail" name="mail" class="mail"/>
+          </form>
 
         </td>
       </tr>

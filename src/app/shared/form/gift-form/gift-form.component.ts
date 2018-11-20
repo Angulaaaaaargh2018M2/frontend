@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Gift} from '../../interfaces/gift';
 import {GiftingEvent} from '../../interfaces/giftingEvent';
@@ -23,12 +23,16 @@ export class GiftFormComponent implements OnInit, OnChanges {
   private readonly _form: FormGroup;
 
   private _links: string[];
+  private _link: string;
+  private _mails: any[];
+  private _mail: string;
 
-  constructor() {
+  constructor(private _el: ElementRef, private _rd: Renderer2) {
     this._submit$ = new EventEmitter<Gift>();
     this._cancel$ = new EventEmitter<void>();
-    this._form = this._buildForm();
     this._links = [];
+    this._mails = [];
+    this._form = this._buildForm();
   }
 
   /**
@@ -74,6 +78,30 @@ export class GiftFormComponent implements OnInit, OnChanges {
     return this._links;
   }
 
+  get link(): string {
+    return this._link;
+  }
+
+  @Input('ngModel')
+  set link(link: string) {
+    this._link = link;
+  }
+
+
+  get mails(): string[] {
+    return this._mails;
+  }
+
+  get mail(): string {
+    return this._mail;
+  }
+
+  @Input('ngModel')
+  set mail(mail: string) {
+    this._mail = mail;
+  }
+
+
   /**
    * Returns private property _cancel$
    */
@@ -112,7 +140,7 @@ export class GiftFormComponent implements OnInit, OnChanges {
       this._model = {
         name: '',
         quantity: 0,
-        linksGifts: [],
+        linksGifts: this._links,
         listPeople: [],
       };
       this._isUpdateMode = false;
@@ -120,7 +148,7 @@ export class GiftFormComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Function to emit event to cancel process
+   * Function to emit event to ca/**ncel process
    */
   cancel() {
     this._cancel$.emit();
@@ -130,16 +158,29 @@ export class GiftFormComponent implements OnInit, OnChanges {
    * Function to emit event to submit form and person
    */
   submit(gift: Gift) {
-    console.log(gift);
-    // this._submit$.emit(gift);
+    gift.linksGifts =  this._links;
+    gift.listPeople = this._mails;
+    //console.log(gift);
+    this._submit$.emit(gift);
   }
 
   addLink() {
-    this._links.push("PLOP");
-    console.log(this._links);
+    this._links.push(this.link);
+    const input = this._el.nativeElement.querySelector('input.link');
+    this._rd.setProperty(input, 'value', '');
   }
 
-  /**
+  addMail() {
+    this._mails.push({
+        mail: this._mail,
+        send: false
+    });
+    const input = this._el.nativeElement.querySelector('input.mail');
+    this._rd.setProperty(input, 'value', '');
+  }
+
+
+  /*
    * Function to build our form
    */
   private _buildForm(): FormGroup {
@@ -149,7 +190,7 @@ export class GiftFormComponent implements OnInit, OnChanges {
       ])),
       quantity : new FormControl(1, Validators.min(1)
       ),
-      linksGifts : new FormArray([]),
+      linksGifts : new FormControl(this._links),
       listPeople : new FormArray([])
   });
   }
