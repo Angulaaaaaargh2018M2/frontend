@@ -87,7 +87,7 @@ export class GiftingEventFormComponent implements OnInit, OnChanges {
    * Function to handle component update
    */
   ngOnChanges(record) {
-    if (record.model && record.model.currentValue && record.model.currentValue.address) {
+    if (record.model && record.model.currentValue && record.model.currentValue.name) {
       this._model = record.model.currentValue;
       this._isUpdateMode = true;
       this._form.patchValue(this._model);
@@ -121,15 +121,16 @@ export class GiftingEventFormComponent implements OnInit, OnChanges {
    */
   private _buildForm(): FormGroup {
     return new FormGroup({
+      id: new FormControl('0'),
       name: new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(2)
       ])),
       nameEvent : new FormControl('', Validators.minLength(2)
       ),
       asAGift: new FormControl(false),
-      date: new FormControl(0, Validators.compose([
-        Validators.required, Validators.min(new Date().getTime())
-      ])),
+      date: new FormControl(0,
+        Validators.required
+      ),
     });
   }
 

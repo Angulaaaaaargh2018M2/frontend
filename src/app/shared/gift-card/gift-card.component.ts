@@ -61,7 +61,7 @@ export class GiftCardComponent implements OnInit {
   }
 
   delete(gift: Gift) {
-    console.log(gift);
+    //console.log(gift);
     this._delete$.emit(gift);
   }
 }
