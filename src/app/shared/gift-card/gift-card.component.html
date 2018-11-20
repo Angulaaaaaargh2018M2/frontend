@@ -8,7 +8,7 @@
         <a *ngIf="gift.listPeople" mat-button title="Envoyer un email aux personnes concernées" href="javascript:void(0);" (click)="sendEmail(gift.id)">
           <mat-icon svgIcon="icon-mail"></mat-icon>
         </a>
-        <a mat-button title="Modifier" href="javascript:void(0);">
+        <a mat-button title="Modifier" [routerLink]="['/edit/gift', gift.id]">
           <mat-icon svgIcon="icon-edit"></mat-icon>
         </a>
         <button mat-button title="Supprimer" (click)="delete(gift)">

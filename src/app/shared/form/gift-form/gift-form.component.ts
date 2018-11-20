@@ -122,17 +122,19 @@ export class GiftFormComponent implements OnInit, OnChanges {
    * OnInit implementation
    */
   ngOnInit() {
-    this._form.addControl(
-      'giftingEventId',
-              new FormControl(this._giftingEvent.id)
-    );
+    if (this._giftingEvent) {
+      this._form.addControl(
+        'giftingEventId',
+        new FormControl(this._giftingEvent.id)
+      );
+    }
   }
 
   /**
    * Function to handle component update
    */
   ngOnChanges(record) {
-    if (record.model && record.model.currentValue && record.model.currentValue.address) {
+    if (record.model && record.model.currentValue && record.model.currentValue.name) {
       this._model = record.model.currentValue;
       this._isUpdateMode = true;
       this._form.patchValue(this._model);
@@ -160,7 +162,6 @@ export class GiftFormComponent implements OnInit, OnChanges {
   submit(gift: Gift) {
     gift.linksGifts =  this._links;
     gift.listPeople = this._mails;
-    //console.log(gift);
     this._submit$.emit(gift);
   }
 
@@ -185,6 +186,7 @@ export class GiftFormComponent implements OnInit, OnChanges {
    */
   private _buildForm(): FormGroup {
     return new FormGroup({
+      id: new FormControl('0'),
       name : new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(2)
       ])),
