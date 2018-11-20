@@ -48,7 +48,7 @@ export class GiftsService {
   /**
    * Function to return one gift for current id
    */
-  fetchOne(id: number): Observable<Gift> {
+  fetchOne(id: string): Observable<Gift> {
     return this._http.get<Gift>(this._backendURL.oneGift.replace(':id', id));
   }
 
@@ -87,5 +87,12 @@ export class GiftsService {
       .pipe(
         map(_ => id)
       );
+  }
+
+  /**
+   * Function to update one gift
+   */
+  update(gift: Gift): Observable<any> {
+    return this._http.put<Gift>(this._backendURL.oneGift.replace(':id', gift.id), gift, this._options());
   }
 }
