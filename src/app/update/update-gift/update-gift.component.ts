@@ -41,7 +41,5 @@ export class UpdateGiftComponent implements OnInit {
             this._router.navigate([route]);
           });
       });
-  });
-}
-
+  }
 }
