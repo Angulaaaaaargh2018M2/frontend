@@ -121,7 +121,7 @@ export class GiftingEventComponent implements OnInit {
     return this._giftsService
       .create(gift)
       .pipe(
-        flatMap(_ => this._giftsService.fetch())
+        flatMap(_ => this._giftsService.fetchForGiftingEvent(this._giftingEvent.id))
       );
   }
 

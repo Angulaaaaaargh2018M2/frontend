@@ -1,6 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Gift} from '../../interfaces/gift';
+import {Gift, ListedPerson} from '../../interfaces/gift';
 import {GiftingEvent} from '../../interfaces/giftingEvent';
 
 @Component({
@@ -24,7 +24,7 @@ export class GiftFormComponent implements OnInit, OnChanges {
 
   private _links: string[];
   private _link: string;
-  private _mails: any[];
+  private _mails: ListedPerson[];
   private _mail: string;
 
   constructor(private _el: ElementRef, private _rd: Renderer2) {
@@ -88,7 +88,7 @@ export class GiftFormComponent implements OnInit, OnChanges {
   }
 
 
-  get mails(): string[] {
+  get mails(): ListedPerson[] {
     return this._mails;
   }
 
