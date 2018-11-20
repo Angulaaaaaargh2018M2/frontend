@@ -29,11 +29,6 @@ export class GiftComponent implements OnInit {
         // un event et un gift
         filter(params => !!params['id']),
         flatMap(params => this._giftsService.fetchOne(params['id']))
-      ),
-      this._route.params.pipe(
-        // pas d'event, pas de gift
-        filter(params => !params['id']),
-        flatMap(params => this._giftsService.fetchOne(params[0]))
       )
     )
   .subscribe((gift: any) => this._gift = gift);
