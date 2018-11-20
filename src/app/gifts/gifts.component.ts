@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Gift} from '../shared/interfaces/gift';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GiftsService} from '../shared/services/gifts.service';
-import {GIFTS} from '../_static/bdd';
-import {merge} from 'rxjs';
-import {filter, flatMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-gifts',
@@ -61,7 +58,7 @@ export class GiftsComponent implements OnInit {
    */
   delete(gift: Gift) {
     console.log('emit gift');
-    this._giftsService.delete(gift);
+    this._giftsService.delete(gift).subscribe();
   }
 
 }

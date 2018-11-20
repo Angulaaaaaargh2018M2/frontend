@@ -4,7 +4,6 @@ import {environment} from '../../../environments/environment';
 import {Gift} from '../interfaces/gift';
 import {Observable} from 'rxjs';
 import {defaultIfEmpty, filter} from 'rxjs/operators';
-import {GiftingEvent} from '../interfaces/giftingEvent';
 
 @Injectable({
   providedIn: 'root'
@@ -80,8 +79,7 @@ export class GiftsService {
     return this._http.get(this._backendURL.sendEmail.replace(':id', id)).subscribe();
   }
 
-  delete(gift: Gift) {
-    this._http.delete(this._backendURL.onePeople.replace(':id', gift.id))
-      .subscribe();
+  delete(gift: Gift): Observable<any> {
+    return this._http.delete(this._backendURL.onePeople.replace(':id', gift.id));
   }
 }
