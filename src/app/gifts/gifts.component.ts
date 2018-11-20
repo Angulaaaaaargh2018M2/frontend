@@ -56,4 +56,11 @@ export class GiftsComponent implements OnInit {
     this._router.navigate([ '/gift', gift.id ]);
   }
 
+  /**
+   * Function to delete one gift
+   */
+  delete(gift: Gift) {
+    this._giftsService.delete(gift);
+  }
+
 }

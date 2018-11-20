@@ -4,9 +4,17 @@
       <a [routerLink]="['/gift', gift.id]">
         <span>{{ gift.name }} </span>
       </a>
-      <span *ngIf="gift.listPeople">
-        <a (click)="sendEmail(id)" href="javascript:;">Notifier toutes les personnes</a>
-      </span>
+      <div class="buttons-info" >
+        <a *ngIf="gift.listPeople" mat-button title="Envoyer un email aux personnes concernées" href="javascript:void(0);" (click)="sendEmail(gift.id)">
+          <mat-icon svgIcon="icon-mail"></mat-icon>
+        </a>
+        <a mat-button title="Modifier" href="javascript:void(0);">
+          <mat-icon svgIcon="icon-edit"></mat-icon>
+        </a>
+        <button mat-button title="Supprimer" (click)="delete(gift)">
+          <mat-icon svgIcon="icon-delete"></mat-icon>
+        </button>
+      </div>
     </mat-card-title>
     <mat-card-subtitle>Quantité : {{gift.quantity}}</mat-card-subtitle>
   </mat-card-title-group>
@@ -41,11 +49,13 @@
             <mat-list-item *ngFor="let person of listPeople">
               <span>{{person.mail}}</span>
               <span class="flex"></span>
-              <span><a (click)="sendOnemail(gift.id, person.send)" >{{person.send | isSend}}</a></span>
+              <span><a (click)="sendOneEmail(gift.id, person.mail)" href="javascript:;" >{{person.send | isSend}}</a></span>
             </mat-list-item>
           </div>
         </mat-list>
       </mat-expansion-panel>
+
     </div>
+
   </mat-card-content>
 </mat-card>
