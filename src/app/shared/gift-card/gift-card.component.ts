@@ -46,6 +46,7 @@ export class GiftCardComponent implements OnInit {
    * Returns private property _delete$
    */
   @Output('deleteGift') get delete$(): EventEmitter<Gift> {
+    console.log('emit 2');
     return this._delete$;
   }
 
@@ -63,6 +64,7 @@ export class GiftCardComponent implements OnInit {
 
 
   delete(gift: Gift) {
+    console.log('emit 1');
     this._delete$.emit(gift);
   }
 }
