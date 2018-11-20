@@ -71,11 +71,16 @@ export class GiftsService {
     return this._http.post<Gift>(this._backendURL.allGifts, gift, this._options());
   }
 
-  sendOneEmail(id: string, email: string): Observable<any> {
-    return this._http.get(this._backendURL.sendOneEmail.replace(':id', id).replace(':email', email));
+  sendOneEmail(id: string, email: string) {
+    return this._http.get<any>(this._backendURL.sendOneEmail.replace(':id', id).replace(':email', email)).subscribe();
   }
 
-  sendEmail(id: string){
-    return this._http.get(this._backendURL.sendEmail.replace(':id', id));
+  sendEmail(id: string) {
+    return this._http.get(this._backendURL.sendEmail.replace(':id', id)).subscribe();
+  }
+
+  delete(gift: Gift) {
+    this._http.delete(this._backendURL.onePeople.replace(':id', gift.id))
+      .subscribe();
   }
 }

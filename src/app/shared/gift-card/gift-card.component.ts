@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Gift, ListedPerson} from '../interfaces/gift';
 import {Router} from '@angular/router';
 import {GiftsService} from '../services/gifts.service';
@@ -11,9 +11,12 @@ import {GiftsService} from '../services/gifts.service';
 export class GiftCardComponent implements OnInit {
 
   private _gift: Gift;
+  // private property to store delete$ value
+  private readonly _delete$: EventEmitter<Gift>;
 
   constructor(private _router: Router, private _giftsService: GiftsService) {
     this._gift = {} as Gift;
+    this._delete$ = new EventEmitter<Gift>();
   }
 
   /**
@@ -39,6 +42,13 @@ export class GiftCardComponent implements OnInit {
     this._gift = gift;
   }
 
+  /**
+   * Returns private property _delete$
+   */
+  @Output('deleteGift') get delete$(): EventEmitter<Gift> {
+    return this._delete$;
+  }
+
   ngOnInit() {
   }
 
@@ -47,6 +57,12 @@ export class GiftCardComponent implements OnInit {
   }
 
   sendEmail(id: string) {
-    this._giftsService.sendEmail(id)
+    this._giftsService.sendEmail(id);
+  }
+
+
+
+  delete(gift: Gift) {
+    this._delete$.emit(gift);
   }
 }
