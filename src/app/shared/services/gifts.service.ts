@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Gift} from '../interfaces/gift';
 import {Observable} from 'rxjs';
-import {defaultIfEmpty, filter} from 'rxjs/operators';
+import {defaultIfEmpty, filter, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -79,7 +79,13 @@ export class GiftsService {
     return this._http.get(this._backendURL.sendEmail.replace(':id', id)).subscribe();
   }
 
-  delete(gift: Gift): Observable<any> {
-    return this._http.delete(this._backendURL.onePeople.replace(':id', gift.id));
+  /**
+   * Function to delete one gift for current id
+   */
+  delete(id: string): Observable<string> {
+    return this._http.delete(this._backendURL.oneGift.replace(':id', id))
+      .pipe(
+        map(_ => id)
+      );
   }
 }

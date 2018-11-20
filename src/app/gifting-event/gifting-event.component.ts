@@ -125,5 +125,14 @@ export class GiftingEventComponent implements OnInit {
       );
   }
 
+  /**
+   * Function to delete one gift
+   */
+  delete(gift: Gift) {
+    this._giftsService
+      .delete(gift.id)
+      .subscribe(_ => this._gifts = this._gifts.filter(__ => __.id !== _));
+  }
+
 
 }

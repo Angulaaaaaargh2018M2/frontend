@@ -4,6 +4,14 @@
       <a [routerLink]="['/giftingEvent', giftingEvent.id]">
         <span>{{ giftingEvent.name }} </span>
       </a>
+      <div class="buttons-info" >
+        <a mat-button title="Modifier" href="javascript:void(0);">
+          <mat-icon svgIcon="icon-edit"></mat-icon>
+        </a>
+        <button mat-button title="Supprimer" (click)="delete(giftingEvent)">
+          <mat-icon svgIcon="icon-delete"></mat-icon>
+        </button>
+      </div>
     </mat-card-title>
     <mat-card-subtitle>{{giftingEvent.nameEvent}}</mat-card-subtitle>
     <mat-card-subtitle>{{giftingEvent.date | date:'dd/MM/yyyy' }}</mat-card-subtitle>

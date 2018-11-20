@@ -57,8 +57,9 @@ export class GiftsComponent implements OnInit {
    * Function to delete one gift
    */
   delete(gift: Gift) {
-    console.log('emit gift');
-    this._giftsService.delete(gift).subscribe();
+    this._giftsService
+      .delete(gift.id)
+      .subscribe(_ => this._gifts = this._gifts.filter(__ => __.id !== _));
   }
 
 }

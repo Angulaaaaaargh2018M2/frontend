@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {Observable} from 'rxjs';
 import {filter, flatMap} from 'rxjs/operators';
 import {GiftingEventsDialogComponent} from '../shared/dialog/gifting-events-dialog/gifting-events-dialog.component';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-gifting-events',
@@ -44,6 +45,15 @@ export class GiftingEventsComponent implements OnInit {
    */
   get view(): string {
     return this._view;
+  }
+
+  /**
+   * Function to delete one giftingEvent
+   */
+  delete(giftingEvent: GiftingEvent) {
+    this._giftingEventsService
+      .delete(giftingEvent.id)
+      .subscribe(_ => this._giftingEvents = this._giftingEvents.filter(__ => __.id !== _));
   }
 
   /**

@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Gift} from '../interfaces/gift';
 import {GiftingEvent} from '../interfaces/giftingEvent';
-import {defaultIfEmpty, filter} from 'rxjs/operators';
+import {defaultIfEmpty, filter, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +57,13 @@ export class GiftingEventsService {
   }
 
 
-  //TODO : Add missing methods
+  /**
+   * Function to delete one person for current id
+   */
+  delete(id: string): Observable<string> {
+    return this._http.delete(this._backendURL.oneGiftingEvent.replace(':id', id))
+      .pipe(
+        map(_ => id)
+      );
+  }
 }

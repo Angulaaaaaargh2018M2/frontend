@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GiftingEvent} from '../interfaces/giftingEvent';
 import {Router} from '@angular/router';
 
@@ -11,8 +11,12 @@ export class GiftingEventCardComponent implements OnInit {
 
   private _giftingEvent: GiftingEvent;
 
+  // private property to store delete$ value
+  private readonly _delete$: EventEmitter<GiftingEvent>;
+
   constructor(private _router: Router) {
     this._giftingEvent = {} as GiftingEvent;
+    this._delete$ = new EventEmitter<GiftingEvent>();
   }
 
   /**
@@ -28,6 +32,21 @@ export class GiftingEventCardComponent implements OnInit {
   @Input()
   set giftingEvent(giftEvent: GiftingEvent) {
     this._giftingEvent = giftEvent;
+  }
+
+  /**
+   * Returns private property _delete$
+   */
+  @Output('deleteGiftingEvent') get delete$(): EventEmitter<GiftingEvent> {
+    console.log('deletedGiftingEvent');
+    return this._delete$;
+  }
+
+  /**
+   * Function to emit event to delete current person
+   */
+  delete(giftingEvent: GiftingEvent) {
+    this._delete$.emit(giftingEvent);
   }
 
   ngOnInit() {
