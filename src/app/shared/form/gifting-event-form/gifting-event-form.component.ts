@@ -57,7 +57,7 @@ export class GiftingEventFormComponent implements OnInit, OnChanges {
     return this._isUpdateMode;
   }
 
-  get minDate(): Date{
+  get minDate(): Date {
     return new Date();
   }
 

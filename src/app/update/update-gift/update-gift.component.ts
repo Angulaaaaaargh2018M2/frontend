@@ -13,7 +13,7 @@ import {Gift} from '../../shared/interfaces/gift';
 })
 export class UpdateGiftComponent implements OnInit {
   // private property to store dialog reference
-  private _peopleDialog: MatDialogRef<GiftsDialogComponent>;
+  private _giftDialog: MatDialogRef<GiftsDialogComponent>;
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _giftsService: GiftsService, private _dialog: MatDialog) { }
 
@@ -24,20 +24,24 @@ export class UpdateGiftComponent implements OnInit {
         flatMap((id: string) => this._giftsService.fetchOne(id))
       )
       .subscribe((gift: Gift) => {
-        this._peopleDialog = this._dialog.open(GiftsDialogComponent, {
+        this._giftDialog = this._dialog.open(GiftsDialogComponent, {
           width: '500px',
           disableClose: true,
           data: gift
         });
 
         // subscribe to afterClosed observable to set dialog status and do process
-        this._peopleDialog.afterClosed()
+        this._giftDialog.afterClosed()
           .pipe(
             filter(_ => !!_),
             flatMap(_ => this._giftsService.update(_))
           )
-          .subscribe(null, null, () => this._router.navigate([ '/people' ]));
+          .subscribe(null, null, () => {
+            const route = 'giftingEvent/' + gift.giftingEventId + '/gifts';
+            this._router.navigate([route]);
+          });
       });
-  }
+  });
+}
 
 }

@@ -186,6 +186,7 @@ export class GiftFormComponent implements OnInit, OnChanges {
    */
   private _buildForm(): FormGroup {
     return new FormGroup({
+      id: new FormControl('0'),
       name : new FormControl('', Validators.compose([
         Validators.required, Validators.minLength(2)
       ])),
