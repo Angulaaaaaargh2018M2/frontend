@@ -71,7 +71,7 @@ export class GiftingEventsService {
    * Function to update one person
    */
   update(giftingEvent: GiftingEvent): Observable<any> {
-    console.log(giftingEvent);
+    // console.log(giftingEvent);
     return this._http.put<GiftingEvent>(this._backendURL.oneGiftingEvent.replace(':id', giftingEvent.id), giftingEvent, this._options());
   }
 

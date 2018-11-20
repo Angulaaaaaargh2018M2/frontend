@@ -66,8 +66,8 @@ export class GiftsService {
    * Function to create a new gift
    */
   create(gift: Gift): Observable<any> {
-    console.log(gift);
-    console.log(this._backendURL.allGifts);
+    // console.log(gift);
+    // console.log(this._backendURL.allGifts);
     return this._http.post<Gift>(this._backendURL.allGifts, gift, this._options());
   }
 

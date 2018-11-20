@@ -39,7 +39,7 @@ export class UpdateGiftingEventComponent implements OnInit {
             filter(_ => !!_),
             flatMap(_ => this._giftingEventsService.update(_))
           )
-          .subscribe(null, null, () => this._router.navigate([ '/giftingEvent' ]));
+          .subscribe(null, null, () => this._router.navigate([ '/giftingEvents' ]));
       });
   }
 

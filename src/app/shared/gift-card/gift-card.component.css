@@ -160,3 +160,7 @@ img {
 .managerLink:hover {
   cursor: pointer;
 }
+
+.gift-info {
+  margin-bottom: 5px;
+}
