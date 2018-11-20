@@ -1,12 +1,10 @@
-<h2 mat-dialog-title *ngIf="isUpdateMode">Update {{ form.get('name').value }} {{ form.get('nameEvent').value }}</h2>
+<h2 mat-dialog-title *ngIf="isUpdateMode">Mise à jour : {{ form.get('name').value }} ({{ form.get('nameEvent').value }})</h2>
 <h2 mat-dialog-title *ngIf="!isUpdateMode">Créer un nouvel événement</h2>
 
 <mat-dialog-content>
   <form novalidate [formGroup]="form">
 
     <p *ngIf="isUpdateMode">
-      <span style="width:100%">ID (disabled)</span><br/>
-      <span style="width:100%">{{model.id}}</span>
     </p>
 
     <table class="full-width" cellspacing="0">
