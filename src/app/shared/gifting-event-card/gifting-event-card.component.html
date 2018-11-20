@@ -5,7 +5,7 @@
         <span>{{ giftingEvent.name }} </span>
       </a>
       <div class="buttons-info" >
-        <a mat-button title="Modifier" href="javascript:void(0);">
+        <a mat-button title="Modifier" [routerLink]="['/edit/giftingEvent', giftingEvent.id]">
           <mat-icon svgIcon="icon-edit"></mat-icon>
         </a>
         <button mat-button title="Supprimer" (click)="delete(giftingEvent)">

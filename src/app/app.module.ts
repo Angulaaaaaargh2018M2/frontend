@@ -31,6 +31,8 @@ import { GiftingEventsDialogComponent } from './shared/dialog/gifting-events-dia
 import { GiftingEventFormComponent } from './shared/form/gifting-event-form/gifting-event-form.component';
 import { GiftsDialogComponent } from './shared/dialog/gifts-dialog/gifts-dialog.component';
 import { GiftFormComponent } from './shared/form/gift-form/gift-form.component';
+import { UpdateGiftingEventComponent } from './update/update-gifting-event/update-gifting-event.component';
+import { UpdateGiftComponent } from './update/update-gift/update-gift.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { GiftFormComponent } from './shared/form/gift-form/gift-form.component';
     GiftingEventsDialogComponent,
     GiftingEventFormComponent,
     GiftsDialogComponent,
-    GiftFormComponent
+    GiftFormComponent,
+    UpdateGiftingEventComponent,
+    UpdateGiftComponent
   ],
   entryComponents: [
     GiftingEventsDialogComponent,

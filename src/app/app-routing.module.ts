@@ -5,6 +5,8 @@ import {HomeComponent} from './home/home.component';
 import {GiftingEventComponent} from './gifting-event/gifting-event.component';
 import {GiftsComponent} from './gifts/gifts.component';
 import {GiftingEventsComponent} from './gifting-events/gifting-events.component';
+import {UpdateGiftComponent} from './update/update-gift/update-gift.component';
+import {UpdateGiftingEventComponent} from './update/update-gifting-event/update-gifting-event.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,7 +16,10 @@ const routes: Routes = [
   { path: 'gift/:id', component: GiftComponent },
   { path: 'gifts', component: GiftsComponent },
   { path: 'giftingEvent/:giftingEventId/gifts', component: GiftsComponent},
-  { path: 'gift/:id/:email', component: GiftComponent}
+  { path: 'gift/:id/:email', component: GiftComponent},
+  { path: 'edit/giftingEvent/:id', component: UpdateGiftingEventComponent },
+  { path: 'edit/gift/:id', component: UpdateGiftComponent },
+
 ];
 
 @NgModule({
