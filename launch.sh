@@ -5,10 +5,14 @@ echo 'Installing frontend ...'
 yarn install
 echo 'Launching frontend ...'
 ng serve &
+BACK_PID=$!
+wait $BACK_PID
 cd _server/backend
 echo 'Installing backend ...'
 yarn install
 echo 'Launching backend ...'
 npm run dev:watch &
+BACK_PID=$!
+wait $BACK_PID
 echo 'Ne pas oublier : Créer une base de données nommée : angulaaaaaargh et y executer le script init.mongo.js qui se trouve dans _server/backend/scripts'
 xdg-open http://localhost:4200/
