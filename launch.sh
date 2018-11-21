@@ -2,8 +2,8 @@ trap ctrl_c INT
 
 function ctrl_c() {
   echo 'Killing node server ...'
-  kill $!
-  echo 'Killing angular cli ...'
+  sleep 1
+  kill -9 $!
 }
 
 git submodule init
