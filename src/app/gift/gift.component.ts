@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Gift} from '../shared/interfaces/gift';
 import {GiftsService} from '../shared/services/gifts.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {filter, flatMap} from 'rxjs/operators';
 import {merge} from 'rxjs';
 import {GIFTS} from '../_static/bdd';
@@ -15,7 +15,9 @@ export class GiftComponent implements OnInit {
 
   private _gift: any;
 
-  constructor(private _giftsService: GiftsService, private _route: ActivatedRoute) {
+  constructor(private _router: Router,
+              private _giftsService: GiftsService,
+              private _route: ActivatedRoute) {
     this._gift = {} as Gift;
   }
 
@@ -33,4 +35,17 @@ export class GiftComponent implements OnInit {
     )
   .subscribe((gift: any) => this._gift = gift);
   }
+
+  /**
+   * Function to delete one gift
+   */
+  delete(gift: Gift) {
+    this._giftsService
+      .delete(gift.id)
+      .subscribe(_ => {
+        this._gift = _;
+        this._router.navigate(['giftingEvents']);
+      });
+  }
+
 }
