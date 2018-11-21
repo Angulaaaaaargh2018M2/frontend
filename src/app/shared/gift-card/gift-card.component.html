@@ -1,24 +1,31 @@
 <mat-card class="mat-whiteframe-2dp">
   <mat-card-title-group>
+    <div class="card-header">
     <mat-card-title>
-      <a [routerLink]="['/gift', gift.id]">
-        <span>{{ gift.name }} </span>
-      </a>
-      <div class="buttons-info" >
-        <a *ngIf="gift.listPeople" mat-button title="Envoyer un email aux personnes concernées" href="javascript:void(0);" (click)="sendEmail(gift.id)">
-          <mat-icon svgIcon="icon-mail"></mat-icon>
+      <span>
+        <a [routerLink]="['/gift', gift.id]">
+          <mat-icon svgIcon="icon-gift"></mat-icon>
+          {{ gift.name }}
         </a>
-        <a mat-button title="Modifier" [routerLink]="['/edit/gift', gift.id]">
-          <mat-icon svgIcon="icon-edit"></mat-icon>
-        </a>
-        <button mat-button title="Supprimer" (click)="delete(gift)">
-          <mat-icon svgIcon="icon-delete"></mat-icon>
-        </button>
-      </div>
+      </span>
+      <span class="flex"></span>
+      <span>
+        <div class="buttons-info" >
+          <a *ngIf="gift.listPeople" mat-button title="Envoyer un email aux personnes concernées" href="javascript:void(0);" (click)="sendEmail(gift.id)">
+            <mat-icon svgIcon="icon-mail"></mat-icon>
+          </a>
+          <a mat-button title="Modifier" [routerLink]="['/edit/gift', gift.id]">
+            <mat-icon svgIcon="icon-edit"></mat-icon>
+          </a>
+          <button mat-button title="Supprimer" (click)="delete(gift)">
+            <mat-icon svgIcon="icon-delete"></mat-icon>
+          </button>
+        </div>
+      </span>
     </mat-card-title>
     <mat-card-subtitle>Quantité : {{gift.quantity}}</mat-card-subtitle>
+    </div>
   </mat-card-title-group>
-
   <mat-card-content>
     <div class="gift-info">
       <mat-expansion-panel>
