@@ -1,9 +1,21 @@
 # Easy gift lancement de l'application
+* Setup du projet
+  * git clone https://github.com/Angulaaaaaargh2018M2/frontend
+  * aller à la racine du projet
+  * `git submodule init`
+  * `git submodule update --recursive --remote`
+  * `yarn install`
+  * se placer dans `_server/backend`
+  * `yarn install`
+  * `npm run dev:watch`
+  * retourner à la racine du projet
+  * `ng serve`
+* Dernière étape : Setup de la base de données
+  * S'assurer d'avoir un serveur mongo de lancé sur le localhost
+  * Créer une base de données nommée `angulaaaaaargh`
+  * executer le script du fichier `_server/backend/scripts/init.mongo.js` dans une console de la base de données créée
+* Aller dans un navigateur à l'adresse : `http://localhost:4200/` et faites vos listes de cadeaux.
 
-* Dans un terminal à la racine du projet lancer la commande `yarn install` 
-* 
-
-Dans webStorm, ajouter une configuration pour lancer le front avec le script run
 
 ## Development server
 
