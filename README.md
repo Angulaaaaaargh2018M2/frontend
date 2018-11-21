@@ -1,6 +1,9 @@
-# NwtSchoolFrontNg6
+# Easy gift lancement de l'application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+* Dans un terminal à la racine du projet lancer la commande `yarn install` 
+* 
+
+Dans webStorm, ajouter une configuration pour lancer le front avec le script run
 
 ## Development server
 
