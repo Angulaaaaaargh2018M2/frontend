@@ -6,6 +6,10 @@
 }
 
 
+.card-header{
+  width: 100%;
+}
+
 
 mat-card,
 mat-list-item {
@@ -68,6 +72,10 @@ mat-card-title-group {
   margin-bottom: 0px;
 }
 
+mat-card-title .flex {
+  flex: 1 1 auto;
+}
+
 .gift mat-icon + a {
   top: -8px;
   position: relative;
@@ -101,7 +109,7 @@ mat-icon {
 }
 
 a {
-  color: #337ab7;
+  color: #E17A57;
   text-decoration: none;
 }
 

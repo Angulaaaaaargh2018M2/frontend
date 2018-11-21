@@ -6,6 +6,22 @@
 }
 
 
+mat-icon {
+  height: 24px;
+  width: 24px;
+}
+
+
+.card-header{
+  width: 100%;
+}
+
+
+mat-card-title .flex {
+  flex: 1 1 auto;
+}
+
+
 
 mat-card,
 mat-list-item {
@@ -101,7 +117,7 @@ mat-icon {
 }
 
 a {
-  color: #337ab7;
+  color: #E17A57;
   text-decoration: none;
 }
 
